@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# React Realtime Counter App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto é uma aplicação simples em React que explora o conceito de interação em tempo real utilizando WebSockets. A aplicação possui duas páginas: uma para adicionar e subtrair valores e outra para exibir o valor atualizado em tempo real.
 
-## Available Scripts
+## Funcionalidades
 
-In the project directory, you can run:
+- **Página Home** (`/`): Possui dois botões, "Adicionar" e "Subtrair", que alteram um valor numérico.
+- **Página Contador** (`/contador`): Exibe o valor numérico atualizado em tempo real conforme os botões da página Home são clicados.
 
-### `npm start`
+## Tecnologias Utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React**: Biblioteca JavaScript para construir a interface do usuário.
+- **Socket.IO**: Biblioteca para comunicação em tempo real entre o cliente e o servidor via WebSockets.
+- **Node.js**: Plataforma para executar JavaScript no lado do servidor.
+- **Express**: Framework web para Node.js (opcional, mas pode ser utilizado no servidor WebSocket).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Pré-requisitos
 
-### `npm test`
+Certifique-se de ter o **Node.js** e o **npm** instalados na sua máquina.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Como Rodar o Projeto
 
-### `npm run build`
+1. **Clonar o Repositório**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   git clone https://github.com/seu-usuario/react-realtime-counter.git
+   cd react-realtime-counter
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Instalar as Dependências**
 
-### `npm run eject`
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   Instale as dependências do servidor WebSocket:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   cd server
+   npm install
+   cd ..
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Rodar o Servidor WebSocket**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   Navegue até a pasta server e execute o servidor:
 
-## Learn More
+   ```bash
+   node server/index.js
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   Instale as dependências do servidor WebSocket:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. **Rodar a Aplicação React**
 
-### Code Splitting
+   Volte para a pasta raiz do projeto e execute a aplicação React:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ```bash
+   npm start
+   ```
 
-### Analyzing the Bundle Size
+   Instale as dependências do servidor WebSocket:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Considerações Finais
 
-### Making a Progressive Web App
+Este projeto é um exemplo básico de como usar React em conjunto com WebSockets para criar uma aplicação interativa em tempo real. Ele pode ser expandido com autenticação, persistência em banco de dados, ou melhorias na UI.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Se tiver algum problema ou sugestão, sinta-se à vontade para contribuir!
