@@ -44,23 +44,19 @@ Certifique-se de ter o **Node.js** e o **npm** instalados na sua máquina.
 
 3. **Rodar o Servidor WebSocket**
 
-   Navegue até a pasta server e execute o servidor:
+   Em um terminal execute o servidor:
 
    ```bash
    node server/index.js
    ```
 
-   Instale as dependências do servidor WebSocket:
-
 4. **Rodar a Aplicação React**
 
-   Volte para a pasta raiz do projeto e execute a aplicação React:
+   Em um segundo terminal execute a aplicação React:
 
    ```bash
    npm start
    ```
-
-   Instale as dependências do servidor WebSocket:
 
 # Considerações Finais
 
