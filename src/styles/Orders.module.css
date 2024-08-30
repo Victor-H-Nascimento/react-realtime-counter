@@ -7,9 +7,6 @@
 .left,
 .right {
     padding: 40px;
-}
-
-.right {
     overflow: hidden;
 }
 
@@ -91,5 +88,13 @@
     .container {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    .left form button:first-of-type {
+        margin-top: 40px;
+    }
+
+    .right {
+        padding-top: 0;
     }
 }

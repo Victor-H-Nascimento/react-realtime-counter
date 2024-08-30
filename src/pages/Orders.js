@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from '../styles/Orders.module.css';
 import data from '../data.json';
 import Order from '../components/Order';
@@ -6,6 +6,8 @@ import Order from '../components/Order';
 const Orders = () => {
     const [order, setOrder] = useState({ items: [], customer: "" });
     const [errors, setErrors] = useState([]);
+
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     function handleAddItem(itemSelected) {
         const itemIndex = order.items?.findIndex(element => element.product == itemSelected);
@@ -45,6 +47,17 @@ const Orders = () => {
         console.log(order);
     }
 
+    useEffect(() => {
+        // Função para atualizar o estado com a largura da tela
+        const handleResize = () => setWindowWidth(window.innerWidth);
+
+        // Adiciona o listener de redimensionamento
+        window.addEventListener('resize', handleResize);
+
+        // Limpa o listener quando o componente é desmontado
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <div className={style.container}>
             <div className={style.left}>
@@ -68,16 +81,26 @@ const Orders = () => {
                         </ul>
                     }
 
+                    {windowWidth < 990 &&
+                        <>
+                            <h2>Resumo do pedido</h2>
+                            <Order order={order} />
+                        </>
+                    }
+
                     <button onClick={(e) => handleSend(e)}>Enviar para cozinha</button>
                     <button onClick={() => setOrder({ items: [], customer: "" })}>Cancelar</button>
                 </form>
             </div>
 
             <div className={style.right}>
-                <h2>Resumo do pedido</h2>
-                <div className={style.resume}>
-                    <Order order={order} />
-                </div>
+                {windowWidth >= 1000 &&
+                    <>
+                        <h2>Resumo do pedido</h2>
+                        <div className={style.resume}>
+                            <Order order={order} />
+                        </div>
+                    </>}
 
                 <hr />
 
