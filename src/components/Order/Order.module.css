@@ -1,0 +1,55 @@
+.ticket {
+    background: #fff2d2;
+    border: 1px solid #fff2d2;
+    border-bottom: 0;
+    padding: 20px 20px 5px;
+    overflow: hidden;
+}
+
+.name {
+    width: 100%;
+    padding: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ticketBorder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    transform: rotate(0.5turn);
+}
+
+.ticketShape {
+    display: inline-block;
+    box-sizing: content-box;
+    position: relative;
+    height: 40px;
+    width: 26px;
+    font-size: 20px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: radial-gradient(circle at 13px 0, #ffffff00 0.4em, #fff2d2 0.5em);
+    background-position: top left, top right;
+}
+
+.ticket ul {
+    margin-top: 10px;
+    padding-left: 20px;
+    list-style: none;
+}
+
+.ticket ul li {
+    padding: 5px 0;
+}
+
+.total {
+    margin-bottom: 0px;
+}
+
+.ticket p,
+.ticket li {
+
+    text-align: center;
+}
