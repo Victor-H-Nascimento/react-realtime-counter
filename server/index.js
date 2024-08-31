@@ -6,21 +6,24 @@ const io = require("socket.io")(3001, {
 });
 
 let count = 0;
-const newOrders = [];
+let newOrders = [];
 
 io.on("connection", (socket) => {
   console.log("New client connected");
 
   // Enviar o valor inicial ao cliente
-  socket.emit("count_updated", count);
+  socket.emit("update-new-orders", newOrders);
 
+  /*
+  socket.emit("count_updated", count);
   socket.on("update_count", (newCount) => {
     count = newCount;
     io.emit("count_updated", count); // Atualizar todos os clientes
   });
+  */
 
-  socket.on("update_new-orders", (order) => {
-    newOrders.push(order);
+  socket.on("update-new-orders", (orders) => {
+    newOrders = orders;
     io.emit("notify-new-orders", newOrders); // Atualizar todos os clientes
   });
 

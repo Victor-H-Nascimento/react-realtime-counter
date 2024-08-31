@@ -43,15 +43,30 @@ const Orders = () => {
         else {
             setErrors([]);
             setNewOrders([order, ...newOrders]);
-            socket.emit("update_new-orders", order);
+            socket.emit("update-new-orders", [order, ...newOrders]);
             setOrder({ items: [], customer: "" })
         }
     }
+
+    useEffect(() => {
+        // Escutar notificações do servidor sobre novos pedidos
+        socket.on("notify-new-orders", (orders) => {
+            setNewOrders(orders);
+        });
+
+        return () => socket.off("notify-new-orders");
+    }, []);
 
     function clean(e) {
         e.preventDefault();
         setOrder({ items: [], customer: "" })
     }
+
+    /*useEffect(() => {
+        // Emitindo o valor inicial ao conectar
+        socket.emit("update-new-orders", newOrders);
+    }, [newOrders]);*/
+
 
     useEffect(() => {
         // Função para atualizar o estado com a largura da tela
@@ -107,7 +122,7 @@ const Orders = () => {
                     </div>
                 </div>
 
-                <hr />
+                <hr style={{ marginTop: "40px" }} />
 
                 <div className={style.ready}>
                     <h2>Prontos 👍</h2>

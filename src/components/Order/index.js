@@ -14,20 +14,18 @@ const Order = ({ order, status }) => {
 
     return (
         (order.items?.length > 0 || order.customer) &&
-        <div id={order.customer + `${Math.random()}`} style={{ background: bgColor }}>
-            <div class={style.ticket}>
-                <p className={style.total}><strong>Total:</strong> {qtd} x {qtd > 1 ? "Pastéis" : "Pastel"}</p>
-                {status == "new" && <ul>
-                    {
-                        order.items.map((item, index) =>
-                            <li key={item.product + index}><strong>{item.qtd}</strong> x {item.product}</li>
-                        )
-                    }
-                </ul>
+        <div class={style.ticket} id={order.customer + `${Math.random()}`} style={{ background: bgColor }}>
+            <p className={style.total}><strong>Total:</strong> {qtd} x {qtd > 1 ? "Pastéis" : "Pastel"}</p>
+            {(status == "new" || status == "queued") && <ul>
+                {
+                    order.items.map((item, index) =>
+                        <li key={item.product + index}><strong>{item.qtd}</strong> x {item.product}</li>
+                    )
                 }
-                <p className={style.name}> {order.customer}</p>
-            </div>
-        </div >
+            </ul>
+            }
+            <p className={style.name}> {order.customer}</p>
+        </div>
     );
 }
 
