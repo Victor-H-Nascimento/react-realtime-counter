@@ -1,9 +1,8 @@
 .ticket {
-    background: #fff2d2;
-    border: 1px solid #fff2d2;
     border-bottom: 0;
     padding: 20px 20px 5px;
     overflow: hidden;
+    width: 100%;
 }
 
 .name {
@@ -32,6 +31,7 @@
     background-repeat: no-repeat;
     background-image: radial-gradient(circle at 13px 0, #ffffff00 0.4em, #fff2d2 0.5em);
     background-position: top left, top right;
+    max-width: 100%;
 }
 
 .ticket ul {

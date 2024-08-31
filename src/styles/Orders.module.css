@@ -7,11 +7,30 @@
 .left,
 .right {
     padding: 40px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .right h2 {
     text-align: center;
+}
+
+.right .orders {
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.right .orders .wrapper {
+    display: grid;
+    gap: 15px;
+    height: 220px;
+    overflow-y: auto;
+}
+
+.right .ready .wrapper {
+    display: grid;
+    gap: 15px;
+    height: 220px;
+    overflow-y: auto;
 }
 
 .left form input {
@@ -34,8 +53,14 @@
     font-weight: bold;
 }
 
+.right .wrapperTicket {
+    width: 60%;
+    border: 1px solid red;
+}
+
 .left form button:first-of-type {
     margin-bottom: 15px;
+    margin-top: 40px;
     background-color: rgb(26, 191, 31);
     color: #FFF;
 
@@ -70,7 +95,6 @@
 
 .resume {
     padding-bottom: 20px;
-    max-width: 80%;
     margin: 0 auto;
 }
 
@@ -84,14 +108,10 @@
     font-size: 14px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
     .container {
         grid-template-columns: 1fr;
         gap: 40px;
-    }
-
-    .left form button:first-of-type {
-        margin-top: 40px;
     }
 
     .right {

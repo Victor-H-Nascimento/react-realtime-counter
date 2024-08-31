@@ -2,18 +2,19 @@ import React, { useState, useEffect } from 'react';
 import style from '../styles/Orders.module.css';
 import data from '../data.json';
 import Order from '../components/Order';
+import io from "socket.io-client";
+
+const socket = io("http://localhost:3001");
 
 const Orders = () => {
     const [order, setOrder] = useState({ items: [], customer: "" });
     const [errors, setErrors] = useState([]);
-
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [newOrders, setNewOrders] = useState([]);
 
     function handleAddItem(itemSelected) {
         const itemIndex = order.items?.findIndex(element => element.product == itemSelected);
         let aux;
-
-        console.log(itemIndex);
 
         if (itemIndex >= 0) {
             aux = [...order.items];
@@ -41,10 +42,15 @@ const Orders = () => {
         }
         else {
             setErrors([]);
+            setNewOrders([order, ...newOrders]);
+            socket.emit("update_new-orders", order);
+            setOrder({ items: [], customer: "" })
         }
+    }
 
-        //console.clear();
-        console.log(order);
+    function clean(e) {
+        e.preventDefault();
+        setOrder({ items: [], customer: "" })
     }
 
     useEffect(() => {
@@ -81,31 +87,35 @@ const Orders = () => {
                         </ul>
                     }
 
-                    {windowWidth < 990 &&
-                        <>
-                            <h2>Resumo do pedido</h2>
-                            <Order order={order} />
-                        </>
-                    }
+
+                    <>
+                        <h2>Resumo do pedido</h2>
+                        <Order order={order} status="new" />
+                    </>
 
                     <button onClick={(e) => handleSend(e)}>Enviar para cozinha</button>
-                    <button onClick={() => setOrder({ items: [], customer: "" })}>Cancelar</button>
+                    <button onClick={(e) => clean(e)}>Cancelar</button>
                 </form>
             </div>
 
             <div className={style.right}>
-                {windowWidth >= 1000 &&
-                    <>
-                        <h2>Resumo do pedido</h2>
-                        <div className={style.resume}>
-                            <Order order={order} />
-                        </div>
-                    </>}
+                <div className={style.orders}>
+                    <h2>Fila da cozinha 🥣</h2>
+
+                    <div className={style.wrapper}>
+                        {newOrders.map((item, idx) => <Order id={idx} order={item} status="queued" />)}
+                    </div>
+                </div>
 
                 <hr />
 
-                <div className={style.orders}>
-                    Fila aqui
+                <div className={style.ready}>
+                    <h2>Prontos 👍</h2>
+
+                    <div className={style.wrapper}>
+                        {newOrders.map((item, idx) => <Order id={idx} order={item} status="ready" />)}
+                    </div>
+
                 </div>
             </div>
 
