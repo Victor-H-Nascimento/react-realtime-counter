@@ -1,9 +1,5 @@
 {
-    "produtos": {
-        "pasteis": [
-            "Carne",
-            "Queijo",
-            "Pizza"
-        ]
-    }
+  "produtos": {
+    "pasteis": ["Carne", "Queijo", "Pizza"]
+  }
 }
